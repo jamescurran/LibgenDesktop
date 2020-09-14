@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/LibgenDesktop/bin/
+/LibgenDesktop/obj/
+/packages
+/LibgenDesktop.Setup/bin
+/LibgenDesktop.Setup/obj
