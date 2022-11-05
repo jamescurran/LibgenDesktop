@@ -205,6 +205,12 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="8" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="8" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="8" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="8" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -230,6 +236,14 @@
                     </RadioButton>
                 </StackPanel>
             </StackPanel>
+            
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="{Binding Localization.SearchFilterLanguage}" />
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SearchFilterLanguage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="{Binding Localization.SearchIncludeFormat}" />
+            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding SearchIncludeFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="{Binding Localization.SearchExcludeFormat}" />
+            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding SearchExcludeFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1" Visibility="{Binding IsExportTabSelected, Converter={StaticResource booleanToCollapsedConverter}}"
               Style="{StaticResource ExportTabContent}">

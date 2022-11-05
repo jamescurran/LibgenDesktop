@@ -884,7 +884,10 @@
             "OpenDetails": "Open book / article details:",
             "InModalWindow": "in a modal window",
             "InNonModalWindow": "in a non-modal window",
-            "InNewTab": "in a new tab"
+            "InNewTab": "in a new tab",
+            "FilterLanguage": "Filter language",
+            "IncludeFormat": "Include format",
+            "Excludeformat": "Exclude format"
         },
         "Export":
         {

@@ -940,7 +940,7 @@ namespace LibgenDesktop.Models
         }
 
         private Task<List<T>> SearchItemsAsync<T>(Func<string, int?, IEnumerable<T>> searchFunction, string searchQuery,
-            IProgress<SearchProgress> progressHandler, CancellationToken cancellationToken)
+            IProgress<SearchProgress> progressHandler, CancellationToken cancellationToken) where T : LibgenObject
         {
             return Task.Run(() =>
             {
@@ -968,6 +968,16 @@ namespace LibgenDesktop.Models
                     }
                 }
                 progressHandler.Report(new SearchProgress(result.Count));
+                // TODO replace with SQL instead
+                // Filter search settings
+                IEnumerable<T> filtered = result;
+                if (!string.IsNullOrEmpty(AppSettings.Search.FilterLanguage))
+                    filtered = filtered.Where(q => q.Language.ToLowerInvariant().Contains(AppSettings.Search.FilterLanguage.ToLowerInvariant()));
+                if (!string.IsNullOrEmpty(AppSettings.Search.IncludeFormat))
+                    filtered = filtered.Where(q => q.Format.ToLowerInvariant().Equals(AppSettings.Search.IncludeFormat.ToLowerInvariant()));
+                if (!string.IsNullOrEmpty(AppSettings.Search.ExcludeFormat))
+                    filtered = filtered.Where(q => !q.Format.ToLowerInvariant().Equals(AppSettings.Search.ExcludeFormat.ToLowerInvariant()));
+                result = filtered.ToList();
                 Logger.Debug($"Search complete, returning {result.Count} items.");
                 return result;
             });

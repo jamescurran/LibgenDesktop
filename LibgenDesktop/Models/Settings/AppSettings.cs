@@ -452,7 +452,8 @@ namespace LibgenDesktop.Models.Settings
                     {
                         LimitResults = true,
                         MaximumResultCount = DEFAULT_MAXIMUM_SEARCH_RESULT_COUNT,
-                        OpenDetailsMode = DetailsMode.NEW_MODAL_WINDOW
+                        OpenDetailsMode = DetailsMode.NEW_MODAL_WINDOW,
+                        FilterLanguage = "English"
                     };
                 }
             }
@@ -460,6 +461,9 @@ namespace LibgenDesktop.Models.Settings
             public bool LimitResults { get; set; }
             public int MaximumResultCount { get; set; }
             public DetailsMode OpenDetailsMode { get; set; }
+            public string FilterLanguage { get; set; }
+            public string IncludeFormat { get; set; }
+            public string ExcludeFormat { get; set; }
         }
 
         internal class ExportSettings

@@ -58,6 +58,9 @@ namespace LibgenDesktop.Models.Localization.Localizators.Windows
             SearchInModalWindow = Format(section => section?.Search?.InModalWindow);
             SearchInNonModalWindow = Format(section => section?.Search?.InNonModalWindow);
             SearchInNewTab = Format(section => section?.Search?.InNewTab);
+            SearchFilterLanguage = Format(section => section?.Search?.FilterLanguage);
+            SearchIncludeFormat = Format(section => section?.Search?.IncludeFormat);
+            SearchExcludeFormat = Format(section => section?.Search?.ExcludeFormat);
             ExportTabHeader = Format(section => section?.Export?.TabHeader);
             ExportOpenResults = Format(section => section?.Export?.OpenResults);
             ExportSplitIntoMultipleFiles = Format(section => section?.Export?.SplitIntoMultipleFiles);
@@ -117,6 +120,9 @@ namespace LibgenDesktop.Models.Localization.Localizators.Windows
         public string SearchInModalWindow { get; }
         public string SearchInNonModalWindow { get; }
         public string SearchInNewTab { get; }
+        public string SearchFilterLanguage { get; }
+        public string SearchIncludeFormat { get; }
+        public string SearchExcludeFormat { get; }
         public string ExportTabHeader { get; }
         public string ExportOpenResults { get; }
         public string ExportSplitIntoMultipleFiles { get; }

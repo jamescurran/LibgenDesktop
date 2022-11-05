@@ -59,6 +59,9 @@ namespace LibgenDesktop.ViewModels.Windows
         private bool searchIsLimitResultsOn;
         private ObservableCollection<string> searchMaximumResultCountDefaultValues;
         private string searchMaximumResultCount;
+        private string searchFilterLanguage;
+        private string searchIncludeFormat;
+        private string searchExcludeFormat;
         private bool searchIsOpenInModalWindowSelected;
         private bool searchIsOpenInNonModalWindowSelected;
         private bool searchIsOpenInNewTabSelected;
@@ -651,6 +654,51 @@ namespace LibgenDesktop.ViewModels.Windows
             }
         }
 
+        public string SearchFilterLanguage
+        {
+            get
+            {
+                return searchFilterLanguage;
+            }
+            set
+            {
+                searchFilterLanguage = value;
+                NotifyPropertyChanged();
+                settingsChanged = true;
+                Validate();
+            }
+        }
+
+        public string SearchIncludeFormat
+        {
+            get
+            {
+                return searchIncludeFormat;
+            }
+            set
+            {
+                searchIncludeFormat = value;
+                NotifyPropertyChanged();
+                settingsChanged = true;
+                Validate();
+            }
+        }
+
+        public string SearchExcludeFormat
+        {
+            get
+            {
+                return searchExcludeFormat;
+            }
+            set
+            {
+                searchExcludeFormat = value;
+                NotifyPropertyChanged();
+                settingsChanged = true;
+                Validate();
+            }
+        }
+
         public bool SearchIsOpenInModalWindowSelected
         {
             get
@@ -958,6 +1006,9 @@ namespace LibgenDesktop.ViewModels.Windows
             searchMaximumResultCountDefaultValues = new ObservableCollection<string> { "100", "250", "500", "1000", "2500", "5000", "10000", "25000", "50000", "100000", "250000", "500000", "1000000" };
             searchIsLimitResultsOn = appSettings.Search.LimitResults;
             searchMaximumResultCount = appSettings.Search.MaximumResultCount.ToString();
+            searchFilterLanguage = appSettings.Search.FilterLanguage;
+            searchIncludeFormat = appSettings.Search.IncludeFormat;
+            searchExcludeFormat = appSettings.Search.ExcludeFormat;
             searchIsOpenInModalWindowSelected = false;
             searchIsOpenInNonModalWindowSelected = false;
             searchIsOpenInNewTabSelected = false;
@@ -1079,7 +1130,10 @@ namespace LibgenDesktop.ViewModels.Windows
             MainModel.AppSettings.Search = new SearchSettings
             {
                 LimitResults = SearchIsLimitResultsOn,
-                MaximumResultCount = SearchMaximumResultCountValue ?? DEFAULT_MAXIMUM_SEARCH_RESULT_COUNT
+                MaximumResultCount = SearchMaximumResultCountValue ?? DEFAULT_MAXIMUM_SEARCH_RESULT_COUNT,
+                FilterLanguage = SearchFilterLanguage,
+                IncludeFormat= SearchIncludeFormat,
+                ExcludeFormat= SearchExcludeFormat,
             };
             if (SearchIsOpenInModalWindowSelected)
             {

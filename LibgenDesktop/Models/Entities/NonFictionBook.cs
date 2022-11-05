@@ -20,7 +20,7 @@ namespace LibgenDesktop.Models.Entities
         public string City { get; set; }
         public string Pages { get; set; }
         public int PagesInFile { get; set; }
-        public string Language { get; set; }
+        //public string Language { get; set; }
         public string Topic { get; set; }
         public string Library { get; set; }
         public string Issue { get; set; }
@@ -44,7 +44,7 @@ namespace LibgenDesktop.Models.Entities
         public string Bookmarked { get; set; }
         public string Searchable { get; set; }
         public long SizeInBytes { get; set; }
-        public string Format { get; set; }
+        //public string Format { get; set; }
         public string Md5Hash { get; set; }
         public string Generic { get; set; }
         public string Visible { get; set; }

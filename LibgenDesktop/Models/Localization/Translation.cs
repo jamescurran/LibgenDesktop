@@ -964,6 +964,9 @@
             public string InModalWindow { get; set; }
             public string InNonModalWindow { get; set; }
             public string InNewTab { get; set; }
+            public string FilterLanguage { get; set; }
+            public string IncludeFormat { get; set; }
+            public string ExcludeFormat { get; set; }
         }
 
         internal class ExportSettingsTranslation
