@@ -83,7 +83,7 @@ namespace LibgenDesktop.ViewModels.SetupSteps
                 {
                     return progressValue;
                 }
-                private set
+                set
                 {
                     progressValue = value;
                     NotifyPropertyChanged();

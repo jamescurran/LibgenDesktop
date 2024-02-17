@@ -246,10 +246,20 @@ namespace LibgenDesktop.Models.Database
         public IEnumerable<NonFictionBook> SearchNonFictionBooks(string searchQuery, int? resultLimit)
         {
             searchQuery = EscapeSearchQuery(searchQuery);
+            var languageQuery = "English";
+            var formatQuery = "epub";
             using (SQLiteCommand command = connection.CreateCommand())
             {
                 command.CommandText = GetSearchCommandWithLimit(SqlScripts.SEARCH_NON_FICTION, resultLimit);
                 command.Parameters.AddWithValue("@SearchQuery", searchQuery);
+                
+                // TODO Find out why sql query doesnt work with extra params
+                command.Parameters.AddWithValue("@LanguageQuery", languageQuery);
+                command.Parameters.AddWithValue("@FormatQuery", formatQuery);
+                string debugSQL = command.CommandText;
+                foreach (SQLiteParameter param in command.Parameters)
+                    debugSQL = debugSQL.Replace(param.ParameterName, param.Value.ToString());
+
                 using (SQLiteDataReader dataReader = command.ExecuteReader())
                 {
                     while (dataReader.Read())

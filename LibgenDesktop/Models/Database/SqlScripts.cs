@@ -94,7 +94,10 @@
         public const string GET_NON_FICTION_MAX_LIBGEN_ID = "SELECT MAX(LibgenId) FROM non_fiction LIMIT 1";
 
         public const string SEARCH_NON_FICTION = "SELECT * FROM non_fiction " +
-            "WHERE Id IN (SELECT rowid FROM non_fiction_fts WHERE non_fiction_fts MATCH @SearchQuery) ORDER BY Id";
+            "WHERE " +
+            // TODO add language and format to SQL instead of using Linq
+            //"Language like \"%@LanguageQuery%\" AND Format like \"%@FormatQuery%\" AND " +
+            "Id IN (SELECT rowid FROM non_fiction_fts WHERE non_fiction_fts MATCH @SearchQuery) ORDER BY Id";
 
         public const string INSERT_NON_FICTION =
             "INSERT INTO non_fiction VALUES (@Id,@Title,@VolumeInfo,@Series,@Periodical,@Authors,@Year,@Edition,@Publisher,@City," +
